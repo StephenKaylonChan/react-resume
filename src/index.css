@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 基础样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.3;
+  color: #333;
+  background: #f3f4f6;
+  font-size: 13px;
+}
+
+/* 打印样式优化 */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: white !important;
+  }
+
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  .a4-page {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    page-break-after: always !important;
+  }
+
+  /* 打印时渐变文字使用纯色（避免 background-clip: text 导致的背景框） */
+  .gradient-text {
+    background: none !important;
+    -webkit-background-clip: border-box !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: border-box !important;
+    color: #1e40af !important;
+    font-weight: 700 !important;
+  }
+
+  /* 确保侧边栏背景色正确显示 */
+  .bg-sidebar-teal,
+  aside,
+  .sidebar {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    background-color: #0f766e !important;
+  }
+
+  /* 确保所有背景色和边框正确显示 */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+}
+
+/* 自定义工具类 */
+@layer utilities {
+  /* 渐变文字效果 - 优化版 */
+  .gradient-text {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+    /* 确保正确的行内显示 */
+    display: inline;
+    /* 添加回退颜色（当渐变失效时） */
+    color: #1e40af;
+  }
+
+  /* A4 页面阴影效果 - 仅在屏幕显示时 */
+  .a4-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}
