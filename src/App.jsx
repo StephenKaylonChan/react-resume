@@ -4,6 +4,7 @@ import Resume from './components/Resume';
 import ResumeSidebar from './components/ResumeSidebar';
 import { exportToPDF } from './utils/exportPDF';
 import { exportToMarkdown } from './utils/exportMarkdown';
+import { exportToImage } from './utils/exportImage';
 
 function App() {
   const [isExporting, setIsExporting] = useState(false);
@@ -16,6 +17,18 @@ function App() {
     } catch (error) {
       console.error('导出失败:', error);
       alert('PDF 导出失败，请重试');
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const handleExportImage = async () => {
+    setIsExporting(true);
+    try {
+      await exportToImage('resume-content', '陈澄-简历.png');
+    } catch (error) {
+      console.error('图片导出失败:', error);
+      alert('图片导出失败，请重试');
     } finally {
       setIsExporting(false);
     }
@@ -42,6 +55,13 @@ function App() {
             className="px-6 py-2.5 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors shadow-md"
           >
             🖨️ 打印
+          </button>
+          <button
+            onClick={handleExportImage}
+            disabled={isExporting}
+            className="px-6 py-2.5 bg-orange-600 text-white font-medium rounded-lg hover:bg-orange-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+          >
+            🖼️ 导出图片
           </button>
           <button
             onClick={() => exportToMarkdown()}
