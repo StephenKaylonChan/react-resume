@@ -41,10 +41,10 @@ npm run preview   # 本地预览生产构建
 react-resume/
 ├── src/              # 源代码
 │   ├── components/   # React 组件（5 个）
-│   ├── utils/        # 工具函数（PDF 导出）
+│   ├── utils/        # 工具函数（PDF / 图片 / Markdown 导出）
 │   ├── App.jsx       # 应用入口
 │   └── index.css     # 全局样式
-├── resume-content/   # 简历内容 Markdown 源文件
+├── resume-content/   # 简历内容 Markdown 源文件（同时被 Markdown 导出引用）
 ├── docs/             # 开发文档
 ├── public/           # 静态资源（头像）
 └── CLAUDE.md         # AI 协作配置

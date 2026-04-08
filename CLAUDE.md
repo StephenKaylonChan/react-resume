@@ -1,13 +1,13 @@
 # React Resume
 
-> React 19 个人简历单页应用，支持 A4 精确排版、PDF 导出和打印优化。
+> React 19 个人简历单页应用，支持 A4 精确排版、多格式导出（PDF/PNG/Markdown）和打印优化。
 
 ## 项目结构
 
 - `src/components/` — React 组件（A4Page, GradientText, Resume, ResumeHeader, ResumeSidebar）
-- `src/utils/` — 工具函数（exportPDF.js: html-to-image 主策略 + html2canvas 降级）
-- `resume-content/` — Markdown 简历内容源文件（个人信息/工作经历/项目/技能/教育）
-- `docs/` — 开发文档、架构决策、项目路线图、功能设计文档
+- `src/utils/` — 导出工具（exportPDF.js, exportImage.js, exportMarkdown.js）
+- `resume-content/` — Markdown 简历内容源文件（同时被 Markdown 导出引用）
+- `docs/` — 开发文档、架构决策、项目路线图、诊断报告
 - `public/` — 静态资源（头像照片）
 
 ## 常用命令
@@ -23,7 +23,7 @@ npm run preview       # 预览生产构建
 ## 技术栈
 
 - **前端**: React 19.2, Vite 7.2, Tailwind CSS 3.4
-- **PDF 导出**: html-to-image 1.11, html2canvas 1.4, jsPDF 3.0
+- **多格式导出**: html-to-image 1.11（PDF + PNG）, html2canvas 1.4（降级）, jsPDF 3.0
 - **代码质量**: ESLint 9.39（无 Prettier、无 TypeScript）
 - **包管理**: npm
 
@@ -81,9 +81,10 @@ type: feat | fix | docs | refactor | perf | test | chore
 
 ## 关键架构决策
 
-- 布局方案：CSS Grid 7:3 两栏（非 Flexbox，A4 精确尺寸需要）
-- 渐变色实现：Tailwind 自定义 theme + 显式 class 映射（非动态拼接，JIT 限制）
-- PDF 导出：html-to-image 优先（保留渐变），html2canvas 降级（渐变→纯色）
+- 布局方案：CSS Grid 两栏 `[1fr_250px]`（非 Flexbox，A4 精确尺寸需要）
+- 渐变色实现：Tailwind 自定义 theme + 显式 class 映射 + CSS class 控制样式（非动态拼接，禁止 style={{}}）
+- 多格式导出：PDF（html-to-image 优先 + html2canvas 动态降级）、PNG（html-to-image）、Markdown（合并源文件）
+- 构建优化：manualChunks 拆分 PDF 依赖，html2canvas 动态 import 按需加载
 - 样式方案：Tailwind CSS utility-first（非 CSS Modules / styled-components）
 - 详细 ADR 记录见 `docs/architecture/adr/`
 
