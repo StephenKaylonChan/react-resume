@@ -4,8 +4,8 @@
 
 ## 项目结构
 
-- `src/components/` — React 组件（A4Page, GradientText, Resume, ResumeHeader, ResumeSidebar）
-- `src/utils/` — 导出工具（exportPDF.js, exportImage.js, exportMarkdown.js）
+- `src/components/` — React 组件（A4Page, ResumeHeader, Resume, GradientText）
+- `src/utils/` — 导出工具（exportPDF.js, exportImage.js, exportMarkdown.js, exportConfig.js）
 - `resume-content/` — Markdown 简历内容源文件（同时被 Markdown 导出引用）
 - `docs/` — 开发文档、架构决策、项目路线图、诊断报告
 - `public/` — 静态资源（头像照片）
@@ -81,7 +81,7 @@ type: feat | fix | docs | refactor | perf | test | chore
 
 ## 关键架构决策
 
-- 布局方案：CSS Grid 两栏 `[1fr_250px]`（非 Flexbox，A4 精确尺寸需要）
+- 布局方案：Teal 头部色带 + Flex 单栏正文（非两栏侧边栏，解决内容不对等问题）
 - 渐变色实现：Tailwind 自定义 theme + 显式 class 映射 + CSS class 控制样式（非动态拼接，禁止 style={{}}）
 - 多格式导出：PDF（html-to-image 优先 + html2canvas 动态降级）、PNG（html-to-image）、Markdown（合并源文件）
 - 构建优化：manualChunks 拆分 PDF 依赖，html2canvas 动态 import 按需加载

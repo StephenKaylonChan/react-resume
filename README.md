@@ -11,19 +11,19 @@ npm run dev        # http://localhost:5173
 
 ## 功能
 
-- A4 精确排版（210mm x 297mm）
-- 17 种技术关键词渐变色
+- A4 精确排版（210mm x 297mm），Teal 头部色带 + 单栏正文
+- 18 种技术关键词渐变色
 - 多格式导出：PDF（html-to-image + html2canvas 双重降级）、高清 PNG、Markdown
 - 打印优化（渐变降级为纯色，背景色保留）
-- 构建优化（manualChunks 拆分，主 chunk ~227KB）
+- 构建优化（manualChunks 拆分，主 chunk ~222KB）
 
 ## 项目结构
 
 ```
 react-resume/
 ├── src/
-│   ├── components/        # React 组件（A4Page, Resume, ResumeHeader, ResumeSidebar, GradientText）
-│   ├── utils/             # 导出工具（exportPDF, exportImage, exportMarkdown）
+│   ├── components/        # React 组件（A4Page, ResumeHeader, Resume, GradientText）
+│   ├── utils/             # 导出工具（exportPDF, exportImage, exportMarkdown, exportConfig）
 │   ├── App.jsx            # 应用入口 + 工具栏
 │   └── index.css          # 全局样式 + 打印媒体查询
 ├── resume-content/        # Markdown 简历内容源文件（同时被 Markdown 导出引用）
@@ -61,6 +61,6 @@ npm run preview   # 预览构建
 
 ## 作者
 
-**陈澄 (Kaylon)**
-- GitHub: [@isabellakiko](https://github.com/isabellakiko)
+**陈澄 (Stephen K. Chan)**
+- GitHub: [@StephenKaylonChan](https://github.com/StephenKaylonChan)
 - 网站: [kaylonchan.com](https://kaylonchan.com)
