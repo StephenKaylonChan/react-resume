@@ -3,6 +3,7 @@ import A4Page from './components/A4Page';
 import Resume from './components/Resume';
 import ResumeSidebar from './components/ResumeSidebar';
 import { exportToPDF } from './utils/exportPDF';
+import { exportToMarkdown } from './utils/exportMarkdown';
 
 function App() {
   const [isExporting, setIsExporting] = useState(false);
@@ -41,6 +42,12 @@ function App() {
             className="px-6 py-2.5 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors shadow-md"
           >
             🖨️ 打印
+          </button>
+          <button
+            onClick={() => exportToMarkdown()}
+            className="px-6 py-2.5 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors shadow-md"
+          >
+            📝 导出 Markdown
           </button>
         </div>
 
