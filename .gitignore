@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/session-notes.md
