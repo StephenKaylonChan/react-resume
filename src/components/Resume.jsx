@@ -8,13 +8,13 @@ import GradientText from './GradientText';
  */
 
 const SectionTitle = ({ children }) => (
-  <h2 className="text-[0.75rem] font-bold text-gray-900 uppercase tracking-wide mb-1.5 border-b border-gray-200 pb-0.5">
+  <h2 className="text-[0.82rem] font-bold text-gray-900 uppercase tracking-wide mb-2 border-b border-gray-200 pb-1">
     {children}
   </h2>
 );
 
 const BulletItem = ({ children }) => (
-  <li className="pl-2.5 relative text-[0.63rem] text-gray-600 leading-[1.35] before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold">
+  <li className="pl-3 relative text-[0.7rem] text-gray-600 leading-snug before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold">
     {children}
   </li>
 );
@@ -29,39 +29,39 @@ BulletItem.propTypes = {
 
 const Resume = () => {
   return (
-    <main className="px-5 py-3 bg-white flex flex-col">
+    <main className="px-6 py-4 bg-white flex flex-col">
       {/* 头部信息 */}
       <ResumeHeader />
 
       {/* 个人简介 */}
-      <section className="mb-2">
+      <section className="mb-3.5">
         <SectionTitle>个人简介</SectionTitle>
-        <p className="text-[0.65rem] text-gray-600 leading-[1.4]">
+        <p className="text-[0.73rem] text-gray-600 leading-relaxed">
           同济大学 2025 届本科毕业，9 个月全栈开发经验，专注 <GradientText gradient="gradient-ai">LLM</GradientText> 应用工程化与 <GradientText gradient="gradient-ai">AI</GradientText> 自动化系统开发。独立设计并落地三代语义分析引擎（<GradientText gradient="gradient-embedding">Embedding</GradientText> 聚类 + <GradientText gradient="gradient-ai">LLM</GradientText> 维度解析），构建多源爬虫 + <GradientText gradient="gradient-ai">LLM</GradientText> 摘要的数据流水线，设计可扩展工具调用框架。技术栈以 <GradientText gradient="gradient-python">Python</GradientText> / <GradientText gradient="gradient-fastapi">FastAPI</GradientText> 为核心，具备完整的全栈交付能力（<GradientText gradient="gradient-react">React 19</GradientText> + <GradientText gradient="gradient-spring">Spring Boot</GradientText>），擅长将 <GradientText gradient="gradient-ai">LLM</GradientText> 能力与真实业务场景结合落地。
         </p>
       </section>
 
       {/* 工作经历 */}
-      <section className="mb-2">
+      <section className="mb-3.5">
         <SectionTitle>工作经历</SectionTitle>
         <div>
-          <div className="flex justify-between items-start mb-1">
+          <div className="flex justify-between items-start mb-1.5">
             <div>
-              <h3 className="text-[0.75rem] font-semibold text-gray-900 mb-0.5">
+              <h3 className="text-[0.82rem] font-semibold text-gray-900 mb-0.5">
                 全栈开发工程师
               </h3>
-              <p className="text-[0.65rem] text-blue-600 font-medium">
+              <p className="text-[0.73rem] text-blue-600 font-medium">
                 上海永麦管理咨询有限公司
               </p>
             </div>
-            <div className="text-[0.63rem] text-gray-500 font-medium whitespace-nowrap">
+            <div className="text-[0.7rem] text-gray-500 font-medium whitespace-nowrap">
               2025.07 — 至今 | 上海
             </div>
           </div>
-          <p className="text-[0.63rem] text-gray-500 mb-1 leading-[1.35]">
+          <p className="text-[0.7rem] text-gray-500 mb-1.5 leading-snug">
             独立负责公司 AI 转型的核心开发工作，将 LLM 能力集成进多个业务系统，覆盖从需求设计到容器化部署的全链路。
           </p>
-          <ul className="space-y-0.5">
+          <ul className="space-y-1.5">
             <BulletItem>
               构建<strong>多源爬虫 + <GradientText gradient="gradient-ai">LLM</GradientText> 摘要数据管道</strong>，设计可扩展适配器框架（BaseCrawler ABC），实现招标情报自动采集与事件分类
             </BulletItem>
@@ -79,23 +79,23 @@ const Resume = () => {
       </section>
 
       {/* 项目经验 */}
-      <section className="mb-2">
+      <section className="mb-3">
         <SectionTitle>项目经验</SectionTitle>
 
         {/* 项目1: 市场情报平台 */}
-        <div className="mb-2">
-          <div className="mb-0.5">
-            <h3 className="text-[0.7rem] font-semibold text-gray-900">
+        <div className="mb-3">
+          <div className="mb-1">
+            <h3 className="text-[0.78rem] font-semibold text-gray-900">
               市场情报平台 · 招标信息自动化抓取
             </h3>
-            <p className="text-[0.58rem] text-blue-600 font-medium">
+            <p className="text-[0.65rem] text-blue-600 font-medium">
               <GradientText gradient="gradient-python">Python</GradientText> · <GradientText gradient="gradient-fastapi">FastAPI</GradientText> · APScheduler · <GradientText gradient="gradient-ai">LLM API</GradientText> · <GradientText gradient="gradient-react">React 19</GradientText> · <GradientText gradient="gradient-mysql">MySQL</GradientText> · <GradientText gradient="gradient-docker">Docker</GradientText>
             </p>
           </div>
-          <p className="text-[0.6rem] text-gray-500 mb-0.5 leading-[1.3]">
+          <p className="text-[0.68rem] text-gray-500 mb-1 leading-snug">
             为市场部构建商机早期发现系统，公众号 / 网站 / 客户动向三源并行采集，LLM 自动摘要与事件分类。
           </p>
-          <ul className="space-y-0.5">
+          <ul className="space-y-1">
             <BulletItem>
               设计<strong>可扩展爬虫适配器框架</strong>（BaseCrawler ABC → GenericHtmlCrawler / JsonApiCrawler / RssCrawler），新增数据源只需 JSON 配置，与 Agent 工具调用模式高度一致
             </BulletItem>
@@ -112,19 +112,19 @@ const Resume = () => {
         </div>
 
         {/* 项目2: YDC 语义分析 */}
-        <div className="mb-2">
-          <div className="mb-0.5">
-            <h3 className="text-[0.7rem] font-semibold text-gray-900">
+        <div className="mb-3">
+          <div className="mb-1">
+            <h3 className="text-[0.78rem] font-semibold text-gray-900">
               YDC 非标清单 LLM 语义分析系统
             </h3>
-            <p className="text-[0.58rem] text-blue-600 font-medium">
+            <p className="text-[0.65rem] text-blue-600 font-medium">
               <GradientText gradient="gradient-python">Python</GradientText> · <GradientText gradient="gradient-fastapi">FastAPI</GradientText> · 阿里云百炼 · <GradientText gradient="gradient-embedding">Embedding</GradientText> · asyncio · <GradientText gradient="gradient-react">React 19</GradientText> · <GradientText gradient="gradient-echarts">ECharts</GradientText> · <GradientText gradient="gradient-mysql">MySQL</GradientText>
             </p>
           </div>
-          <p className="text-[0.6rem] text-gray-500 mb-0.5 leading-[1.3]">
+          <p className="text-[0.68rem] text-gray-500 mb-1 leading-snug">
             通过 LLM 识别 13,548 条工程造价清单中的同义重复，辅助清单资产治理。
           </p>
-          <ul className="space-y-0.5">
+          <ul className="space-y-1">
             <BulletItem>
               独立迭代<strong>三代语义分析引擎</strong>：V2 <GradientText gradient="gradient-embedding">Embedding</GradientText> 聚类（阈值 0.82）+ LLM 精细判断；V3 LLM 提取纯净名称（去除 12 维变体）+ 二次聚类（阈值 0.90）；V4 qwen3-max 单次结构化提取，100 条/批异步并行
             </BulletItem>
@@ -142,22 +142,22 @@ const Resume = () => {
 
         {/* 项目3: 个人网站 */}
         <div>
-          <div className="mb-0.5">
-            <h3 className="text-[0.7rem] font-semibold text-gray-900">
+          <div className="mb-1">
+            <h3 className="text-[0.78rem] font-semibold text-gray-900">
               全栈个人网站 · kaylonchan.com
             </h3>
-            <p className="text-[0.58rem] text-blue-600 font-medium">
+            <p className="text-[0.65rem] text-blue-600 font-medium">
               <GradientText gradient="gradient-nextjs">Next.js 15</GradientText> · <GradientText gradient="gradient-spring">Spring Boot 3.5</GradientText> · <GradientText gradient="gradient-typescript">TypeScript</GradientText> · <GradientText gradient="gradient-turborepo">Turborepo</GradientText> · <GradientText gradient="gradient-nginx">Nginx</GradientText> · 阿里云 ECS
             </p>
           </div>
-          <p className="text-[0.6rem] text-gray-600 leading-[1.35]">
+          <p className="text-[0.7rem] text-gray-600 leading-snug">
             Monorepo 全栈个人品牌网站，3 个前端应用（旅行摄影 / 日语学习 / 开发者工具）+ <GradientText gradient="gradient-spring">Spring Boot</GradientText> 后端 + 5 个共享 npm 包，407 次提交迭代至生产级部署，<GradientText gradient="gradient-nginx">Nginx</GradientText> 多域名反向代理 + SSL + CSP 安全头。
           </p>
         </div>
       </section>
 
       {/* 底部说明 */}
-      <div className="text-[0.55rem] text-gray-400 text-center mt-auto italic">
+      <div className="text-[0.6rem] text-gray-400 text-center mt-auto italic">
         本简历通过 <GradientText gradient="gradient-react">React</GradientText> + <GradientText gradient="gradient-vite">Vite</GradientText> + <GradientText gradient="gradient-tailwind">Tailwind CSS</GradientText> 自主设计开发
       </div>
     </main>
