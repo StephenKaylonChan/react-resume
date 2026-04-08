@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import A4Page from './components/A4Page';
 import Resume from './components/Resume';
-import ResumeSidebar from './components/ResumeSidebar';
+import ResumeHeader from './components/ResumeHeader';
 import { exportToPDF } from './utils/exportPDF';
 import { exportToMarkdown } from './utils/exportMarkdown';
 import { exportToImage } from './utils/exportImage';
@@ -73,9 +73,8 @@ function App() {
 
         {/* A4 简历页面 */}
         <div id="resume-content">
-          <A4Page>
+          <A4Page header={<ResumeHeader />}>
             <Resume />
-            <ResumeSidebar />
           </A4Page>
         </div>
 
