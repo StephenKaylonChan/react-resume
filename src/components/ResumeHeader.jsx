@@ -20,15 +20,15 @@ const SKILL_CATEGORIES = [
   },
   {
     label: '后端',
-    skills: ['Python', 'FastAPI', 'SQLAlchemy', 'APScheduler', 'httpx', 'BeautifulSoup4', 'pandas', 'JWT', 'Docker'],
+    skills: ['Python', 'FastAPI', 'Spring Boot', 'Java', 'SQLAlchemy', 'MySQL 8', 'APScheduler', 'httpx', 'BeautifulSoup4', 'pandas', 'JWT', 'Docker'],
   },
   {
     label: '前端',
     skills: ['React 19', 'TypeScript', 'Next.js', 'Vite', 'ECharts', 'Ant Design', 'Tailwind CSS'],
   },
   {
-    label: '全栈',
-    skills: ['Spring Boot', 'Java', 'MySQL 8', 'Alembic', 'Nginx', 'Linux', 'Git', 'pnpm Monorepo'],
+    label: '基础设施',
+    skills: ['Nginx', 'Linux', 'Git', 'pnpm Monorepo'],
   },
 ];
 
@@ -56,7 +56,7 @@ const ResumeHeader = () => {
         <div className="flex-1">
           <div className="flex items-baseline gap-2.5 mb-0.5">
             <h1 className="text-[1.3rem] font-bold text-white font-serif leading-tight">陈澄</h1>
-            <span className="text-[0.8rem] text-white/80 font-medium">Kaylon Chan</span>
+            <span className="text-[0.8rem] text-white/80 font-medium">Stephen K. Chan</span>
           </div>
           <p className="text-[0.7rem] text-white/90 font-medium mb-2">
             AI 应用开发工程师 | LLM 集成 · 全栈开发 · 自动化系统

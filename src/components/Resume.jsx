@@ -123,9 +123,10 @@ const Resume = () => {
               <GradientText gradient="gradient-nextjs">Next.js 15</GradientText> · <GradientText gradient="gradient-spring">Spring Boot 3.5</GradientText> · <GradientText gradient="gradient-typescript">TypeScript</GradientText> · <GradientText gradient="gradient-turborepo">Turborepo</GradientText> · <GradientText gradient="gradient-nginx">Nginx</GradientText> · 阿里云 ECS
             </p>
           </div>
-          <p className="text-[0.68rem] text-gray-600 leading-snug">
-            Monorepo 全栈个人品牌网站，3 个前端应用（旅行摄影 / 日语学习 / 开发者工具）+ <GradientText gradient="gradient-spring">Spring Boot</GradientText> 后端 + 5 个共享 npm 包，407 次提交迭代至生产级部署，<GradientText gradient="gradient-nginx">Nginx</GradientText> 多域名反向代理 + SSL + CSP 安全头。
-          </p>
+          <ul className="space-y-0.5">
+            <BulletItem>Monorepo 架构管理 3 个前端应用（旅行摄影 / 日语学习 / 开发者工具）+ <GradientText gradient="gradient-spring">Spring Boot</GradientText> 后端 + 5 个共享 npm 包</BulletItem>
+            <BulletItem>407 次提交迭代至生产级部署，<GradientText gradient="gradient-nginx">Nginx</GradientText> 多域名反向代理 + SSL + CSP 安全头</BulletItem>
+          </ul>
         </div>
       </section>
 
