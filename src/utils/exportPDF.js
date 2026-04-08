@@ -1,5 +1,6 @@
 import { toPng } from 'html-to-image';
 import jsPDF from 'jspdf';
+import { getToPngOptions } from './exportConfig';
 
 /**
  * 导出元素为 PDF 文件（优化版 - 使用 html-to-image）
@@ -26,31 +27,12 @@ export async function exportToPDF(elementId, filename = 'resume.pdf') {
     `;
     document.head.appendChild(styleElement);
 
-    // 使用 html-to-image（对渐变支持更好）
-    const dataUrl = await toPng(element, {
-      quality: 1.0,
-      pixelRatio: 3, // 高清晰度
-      backgroundColor: '#ffffff',
-      cacheBust: true,
-      // 关键配置：确保样式正确渲染
-      style: {
-        // 强制使用精确的颜色
-        '-webkit-print-color-adjust': 'exact',
-        'print-color-adjust': 'exact',
-        'color-adjust': 'exact',
-      },
-      // 跳过不需要的元素
-      filter: (node) => {
-        // 排除工具栏按钮等
-        if (node.classList) {
-          return !node.classList.contains('print:hidden');
-        }
-        return true;
-      },
-    });
-
-    // 移除临时样式
-    document.head.removeChild(styleElement);
+    let dataUrl;
+    try {
+      dataUrl = await toPng(element, getToPngOptions(element));
+    } finally {
+      document.head.removeChild(styleElement);
+    }
 
     // 创建图片对象获取尺寸
     const img = new Image();

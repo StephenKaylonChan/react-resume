@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
  */
 
 const CONTACT_ITEMS = [
-  { icon: '📧', text: 'chenchengpre@163.com', href: 'mailto:chenchengpre@163.com' },
-  { icon: '📱', text: '13519399194', href: 'tel:13519399194' },
-  { icon: '📍', text: '上海（期望深圳）' },
-  { icon: '🌐', text: 'kaylonchan.com', href: 'https://kaylonchan.com' },
-  { icon: '💻', text: 'github.com/StephenKaylonChan', href: 'https://github.com/StephenKaylonChan' },
+  { icon: '📧', label: '邮箱', text: 'chenchengpre@163.com', href: 'mailto:chenchengpre@163.com' },
+  { icon: '📱', label: '电话', text: '13519399194', href: 'tel:13519399194' },
+  { icon: '📍', label: '地点', text: '上海（期望深圳）' },
+  { icon: '🌐', label: '网站', text: 'kaylonchan.com', href: 'https://kaylonchan.com' },
+  { icon: '💻', label: 'GitHub', text: 'github.com/StephenKaylonChan', href: 'https://github.com/StephenKaylonChan' },
 ];
 
 const SKILL_CATEGORIES = [
@@ -45,9 +45,7 @@ SkillBadge.propTypes = {
 const ResumeHeader = () => {
   return (
     <div>
-      {/* 上部：头像 + 姓名 + 联系方式 */}
       <div className="flex gap-4 mb-2.5">
-        {/* 头像 */}
         <div className="w-[72px] h-[90px] rounded-md overflow-hidden shadow-xl flex-shrink-0">
           <img
             src="/resume_avatar.JPG"
@@ -55,7 +53,6 @@ const ResumeHeader = () => {
             className="w-full h-full object-cover"
           />
         </div>
-        {/* 姓名 + 职位 + 联系方式 */}
         <div className="flex-1">
           <div className="flex items-baseline gap-2.5 mb-0.5">
             <h1 className="text-[1.3rem] font-bold text-white font-serif leading-tight">陈澄</h1>
@@ -67,7 +64,7 @@ const ResumeHeader = () => {
           <div className="flex flex-wrap gap-x-4 gap-y-0.5">
             {CONTACT_ITEMS.map((item) => (
               <span key={item.text} className="text-[0.57rem] text-white/80 flex items-center gap-1">
-                <span className="text-[0.5rem]">{item.icon}</span>
+                <span className="text-[0.5rem]" role="img" aria-label={item.label}>{item.icon}</span>
                 {item.href ? (
                   <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="text-white/90 hover:text-white">
                     {item.text}
@@ -81,7 +78,6 @@ const ResumeHeader = () => {
         </div>
       </div>
 
-      {/* 下部：技能标签 - 紧凑横排 */}
       <div className="space-y-1">
         {SKILL_CATEGORIES.map((cat) => (
           <div key={cat.label} className="flex items-start gap-1.5">
