@@ -12,21 +12,22 @@ import PropTypes from 'prop-types';
 const gradientClasses = {
   'gradient-python': 'bg-gradient-python',
   'gradient-java': 'bg-gradient-java',
-  'gradient-javascript': 'bg-gradient-javascript',
   'gradient-spring': 'bg-gradient-spring',
   'gradient-mysql': 'bg-gradient-mysql',
-  'gradient-html5': 'bg-gradient-html5',
   'gradient-ai': 'bg-gradient-ai',
   'gradient-linux': 'bg-gradient-linux',
-  'gradient-pandas': 'bg-gradient-pandas',
   'gradient-lstm': 'bg-gradient-lstm',
-  'gradient-opencv': 'bg-gradient-opencv',
-  'gradient-chatgpt': 'bg-gradient-chatgpt',
-  'gradient-claude': 'bg-gradient-claude',
   'gradient-react': 'bg-gradient-react',
   'gradient-vite': 'bg-gradient-vite',
   'gradient-fastapi': 'bg-gradient-fastapi',
   'gradient-tailwind': 'bg-gradient-tailwind',
+  'gradient-nextjs': 'bg-gradient-nextjs',
+  'gradient-typescript': 'bg-gradient-typescript',
+  'gradient-docker': 'bg-gradient-docker',
+  'gradient-echarts': 'bg-gradient-echarts',
+  'gradient-nginx': 'bg-gradient-nginx',
+  'gradient-embedding': 'bg-gradient-embedding',
+  'gradient-turborepo': 'bg-gradient-turborepo',
 };
 
 const GradientText = ({ children, gradient }) => {
