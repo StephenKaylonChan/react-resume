@@ -1,5 +1,4 @@
 import { toPng } from 'html-to-image';
-import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
 /**
@@ -53,40 +52,18 @@ export async function exportToPDF(elementId, filename = 'resume.pdf') {
     // 移除临时样式
     document.head.removeChild(styleElement);
 
-    // 创建 PDF
-    const pdf = new jsPDF({
-      orientation: 'portrait',
-      unit: 'mm',
-      format: 'a4',
-      compress: true,
-    });
-
-    // 创建图片对象
+    // 创建图片对象获取尺寸
     const img = new Image();
     img.src = dataUrl;
 
-    // 等待图片加载
-    await new Promise((resolve) => {
+    // 等待��片加载
+    await new Promise((resolve, reject) => {
       img.onload = resolve;
+      img.onerror = () => reject(new Error('Failed to load exported image'));
     });
 
-    // 计算尺寸以适配 A4
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
-    const imgWidth = img.width;
-    const imgHeight = img.height;
-
-    // 计算缩放比例
-    const ratio = Math.min(pdfWidth / (imgWidth / 72 * 25.4), pdfHeight / (imgHeight / 72 * 25.4));
-    const scaledWidth = (imgWidth / 72 * 25.4) * ratio;
-    const scaledHeight = (imgHeight / 72 * 25.4) * ratio;
-
-    // 居中
-    const x = (pdfWidth - scaledWidth) / 2;
-    const y = 0;
-
-    pdf.addImage(dataUrl, 'PNG', x, y, scaledWidth, scaledHeight, undefined, 'FAST');
-    pdf.save(filename);
+    // 生成 PDF
+    createAndSavePDF(dataUrl, img.width, img.height, filename, true);
 
     return true;
   } catch (error) {
@@ -116,7 +93,8 @@ async function exportToPDFWithCanvas(elementId, filename = 'resume.pdf') {
     // 等待样式应用生效
     await new Promise(resolve => setTimeout(resolve, 100));
 
-    // 使用 html2canvas
+    // 动态加载 html2canvas（仅降级时加载，减小主 bundle 体积）
+    const { default: html2canvas } = await import('html2canvas');
     const canvas = await html2canvas(element, {
       scale: 3,
       useCORS: true,
@@ -132,35 +110,9 @@ async function exportToPDFWithCanvas(elementId, filename = 'resume.pdf') {
     // 恢复原始样式
     restoreOriginalStyles(optimizationResult);
 
-    // 创建 PDF
+    // 生成 PDF
     const imgData = canvas.toDataURL('image/png', 1.0);
-    const pdf = new jsPDF({
-      orientation: 'portrait',
-      unit: 'mm',
-      format: 'a4',
-      compress: true,
-    });
-
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
-    const imgWidth = canvas.width;
-    const imgHeight = canvas.height;
-    const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-    const imgX = (pdfWidth - imgWidth * ratio) / 2;
-    const imgY = 0;
-
-    pdf.addImage(
-      imgData,
-      'PNG',
-      imgX,
-      imgY,
-      imgWidth * ratio,
-      imgHeight * ratio,
-      undefined,
-      'FAST'
-    );
-
-    pdf.save(filename);
+    createAndSavePDF(imgData, canvas.width, canvas.height, filename, false);
     return true;
   } catch (error) {
     console.error('PDF export failed:', error);
@@ -230,4 +182,41 @@ function restoreOriginalStyles(originalStyles) {
     const el = saved.element;
     el.style.boxShadow = saved.boxShadow;
   });
+}
+
+/**
+ * 从图片数据创建 A4 PDF 并保存
+ * @param {string} imageData - 图片 dataUrl 或 canvas toDataURL 输出
+ * @param {number} imgWidth - 图片原始宽度
+ * @param {number} imgHeight - 图片原始高度
+ * @param {string} filename - PDF 文件名
+ * @param {boolean} useMmConversion - 是否需要像素到毫米转换（html-to-image 需要，html2canvas 不需要）
+ */
+function createAndSavePDF(imageData, imgWidth, imgHeight, filename, useMmConversion = false) {
+  const pdf = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'a4',
+    compress: true,
+  });
+
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = pdf.internal.pageSize.getHeight();
+
+  let scaledWidth, scaledHeight;
+  if (useMmConversion) {
+    const widthMm = imgWidth / 72 * 25.4;
+    const heightMm = imgHeight / 72 * 25.4;
+    const ratio = Math.min(pdfWidth / widthMm, pdfHeight / heightMm);
+    scaledWidth = widthMm * ratio;
+    scaledHeight = heightMm * ratio;
+  } else {
+    const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+    scaledWidth = imgWidth * ratio;
+    scaledHeight = imgHeight * ratio;
+  }
+
+  const x = (pdfWidth - scaledWidth) / 2;
+  pdf.addImage(imageData, 'PNG', x, 0, scaledWidth, scaledHeight, undefined, 'FAST');
+  pdf.save(filename);
 }

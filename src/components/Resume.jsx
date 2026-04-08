@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ResumeHeader from './ResumeHeader';
 import GradientText from './GradientText';
 
@@ -11,6 +12,20 @@ const SectionTitle = ({ children }) => (
     {children}
   </h2>
 );
+
+const BulletItem = ({ children }) => (
+  <li className="pl-3 relative text-[0.75rem] text-gray-600 leading-snug before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold">
+    {children}
+  </li>
+);
+
+SectionTitle.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+BulletItem.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 const Resume = () => {
   return (
@@ -47,18 +62,18 @@ const Resume = () => {
             </div>
           </div>
           <ul className="space-y-1.5">
-            <li className="pl-3 relative text-[0.75rem] text-gray-600 leading-snug before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold">
+            <BulletItem>
               负责公司数字化系统的研发工作，主导公司官网全栈开发：<GradientText gradient="gradient-react">React</GradientText> 构建现代化前端界面、<GradientText gradient="gradient-spring">Spring Boot</GradientText> 处理后台逻辑与权限认证、<GradientText gradient="gradient-fastapi">FastAPI</GradientText> 开发 <GradientText gradient="gradient-ai">AI</GradientText> 智能问答助手
-            </li>
-            <li className="pl-3 relative text-[0.75rem] text-gray-600 leading-snug before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold">
+            </BulletItem>
+            <BulletItem>
               开发 <GradientText gradient="gradient-python">Python</GradientText> 爬虫数据采集工具，调用 <GradientText gradient="gradient-ai">AI API</GradientText> 进行全网搜索与智能分析，实现海量造价清单数据的自动化处理和关键字段提取，优化成本控制和预算管理流程
-            </li>
-            <li className="pl-3 relative text-[0.75rem] text-gray-600 leading-snug before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold">
+            </BulletItem>
+            <BulletItem>
               系统学习 <GradientText gradient="gradient-java">Java</GradientText> 基础、<GradientText gradient="gradient-mysql">SQL</GradientText> 语句、HTTP 协议和 RESTful API 设计，目前正在深入学习 <GradientText gradient="gradient-spring">Spring Boot</GradientText> 框架，逐步参与后端开发工作
-            </li>
-            <li className="pl-3 relative text-[0.75rem] text-gray-600 leading-snug before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold">
+            </BulletItem>
+            <BulletItem>
               擅长运用 <GradientText gradient="gradient-claude">Claude Code</GradientText>、<GradientText gradient="gradient-chatgpt">ChatGPT</GradientText> 等 <GradientText gradient="gradient-ai">AI</GradientText> 工具提升开发效率和学习速度。工作之余和周末持续深度学习前后端技术，热爱编程，致力于快速成长为高水平全栈开发者
-            </li>
+            </BulletItem>
           </ul>
         </div>
 
@@ -79,15 +94,15 @@ const Resume = () => {
             </div>
           </div>
           <ul className="space-y-1.5">
-            <li className="pl-3 relative text-[0.75rem] text-gray-600 leading-snug before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold">
+            <BulletItem>
               使用 <GradientText gradient="gradient-python">Python</GradientText> 和 Excel 开发数据分析工具，处理工程数据统计
-            </li>
-            <li className="pl-3 relative text-[0.75rem] text-gray-600 leading-snug before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold">
+            </BulletItem>
+            <BulletItem>
               学习 <GradientText gradient="gradient-javascript">Web</GradientText> 前端技术，参与内部系统界面设计开发
-            </li>
-            <li className="pl-3 relative text-[0.75rem] text-gray-600 leading-snug before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold">
+            </BulletItem>
+            <BulletItem>
               运用 <GradientText gradient="gradient-ai">AI</GradientText> 工具协助工作，在资料整理等环节提升效率
-            </li>
+            </BulletItem>
           </ul>
         </div>
       </section>

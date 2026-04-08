@@ -1,7 +1,26 @@
+import PropTypes from 'prop-types';
+
 /**
  * ResumeSidebar 组件
  * 右侧边栏 - 包含头像、技能、成就等信息
  */
+
+const BADGE_VARIANTS = {
+  default: 'bg-white/20',
+  highlight: 'bg-white/30',
+  accent: 'bg-orange-400/30',
+};
+
+const SkillBadge = ({ children, variant = 'default' }) => (
+  <span className={`text-[0.6rem] px-1.5 py-0.5 rounded text-white font-medium ${BADGE_VARIANTS[variant]}`}>
+    {children}
+  </span>
+);
+
+SkillBadge.propTypes = {
+  children: PropTypes.node.isRequired,
+  variant: PropTypes.oneOf(Object.keys(BADGE_VARIANTS)),
+};
 
 const ResumeSidebar = () => {
   return (
@@ -72,61 +91,61 @@ const ResumeSidebar = () => {
           <div className="mb-1.5">
             <h4 className="text-[0.7rem] font-semibold mb-1.5 text-white/90">前端技术</h4>
             <div className="flex flex-wrap gap-1">
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/30 rounded text-white font-medium">React</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/30 rounded text-white font-medium">JavaScript ES6+</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/30 rounded text-white font-medium">Tailwind CSS</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">HTML5</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">CSS3</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">Vite</span>
+              <SkillBadge variant="highlight">React</SkillBadge>
+              <SkillBadge variant="highlight">JavaScript ES6+</SkillBadge>
+              <SkillBadge variant="highlight">Tailwind CSS</SkillBadge>
+              <SkillBadge>HTML5</SkillBadge>
+              <SkillBadge>CSS3</SkillBadge>
+              <SkillBadge>Vite</SkillBadge>
             </div>
           </div>
 
           <div className="mb-1.5">
             <h4 className="text-[0.7rem] font-semibold mb-1.5 text-white/90">数据分析</h4>
             <div className="flex flex-wrap gap-1">
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/30 rounded text-white font-medium">Python</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/30 rounded text-white font-medium">pandas</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">机器学习</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">LSTM</span>
+              <SkillBadge variant="highlight">Python</SkillBadge>
+              <SkillBadge variant="highlight">pandas</SkillBadge>
+              <SkillBadge>机器学习</SkillBadge>
+              <SkillBadge>LSTM</SkillBadge>
             </div>
           </div>
 
           <div className="mb-1.5">
             <h4 className="text-[0.7rem] font-semibold mb-1.5 text-white/90">桌面应用开发</h4>
             <div className="flex flex-wrap gap-1">
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">C#</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">Revit API</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">OpenCV</span>
+              <SkillBadge>C#</SkillBadge>
+              <SkillBadge>Revit API</SkillBadge>
+              <SkillBadge>OpenCV</SkillBadge>
             </div>
           </div>
 
           <div className="mb-1.5">
             <h4 className="text-[0.7rem] font-semibold mb-1.5 text-white/90">后端技术（快速成长中）</h4>
             <div className="flex flex-wrap gap-1">
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-orange-400/30 rounded text-white font-medium">Java</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-orange-400/30 rounded text-white font-medium">Spring Boot</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-orange-400/30 rounded text-white font-medium">MySQL</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-orange-400/30 rounded text-white font-medium">RESTful API</span>
+              <SkillBadge variant="accent">Java</SkillBadge>
+              <SkillBadge variant="accent">Spring Boot</SkillBadge>
+              <SkillBadge variant="accent">MySQL</SkillBadge>
+              <SkillBadge variant="accent">RESTful API</SkillBadge>
             </div>
           </div>
 
           <div className="mb-1.5">
             <h4 className="text-[0.7rem] font-semibold mb-1.5 text-white/90">AI工具应用</h4>
             <div className="flex flex-wrap gap-1">
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">ChatGPT</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">Claude Code</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">Gemini</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">Cursor</span>
+              <SkillBadge>ChatGPT</SkillBadge>
+              <SkillBadge>Claude Code</SkillBadge>
+              <SkillBadge>Gemini</SkillBadge>
+              <SkillBadge>Cursor</SkillBadge>
             </div>
           </div>
 
           <div className="mb-1.5">
             <h4 className="text-[0.7rem] font-semibold mb-1.5 text-white/90">开发工具</h4>
             <div className="flex flex-wrap gap-1">
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">Git</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">VS Code</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">Linux</span>
-              <span className="text-[0.6rem] px-1.5 py-0.5 bg-white/20 rounded text-white font-medium">阿里云</span>
+              <SkillBadge>Git</SkillBadge>
+              <SkillBadge>VS Code</SkillBadge>
+              <SkillBadge>Linux</SkillBadge>
+              <SkillBadge>阿里云</SkillBadge>
             </div>
           </div>
         </div>

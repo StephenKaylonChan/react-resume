@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 /**
  * A4Page 组件
  * A4 尺寸的页面容器 (210mm x 297mm)
@@ -9,6 +11,10 @@ const A4Page = ({ children }) => {
       {children}
     </div>
   );
+};
+
+A4Page.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default A4Page;
