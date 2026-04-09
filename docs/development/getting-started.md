@@ -40,7 +40,7 @@ npm run preview   # 本地预览生产构建
 ```
 react-resume/
 ├── src/              # 源代码
-│   ├── components/   # React 组件（5 个）
+│   ├── components/   # React 组件（4 个）
 │   ├── utils/        # 工具函数（PDF / 图片 / Markdown 导出）
 │   ├── App.jsx       # 应用入口
 │   └── index.css     # 全局样式

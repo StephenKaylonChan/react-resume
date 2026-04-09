@@ -2,6 +2,11 @@
 
 所有重要变更记录。格式遵循 [Keep a Changelog](https://keepachangelog.com/)。
 
+## [v2.0.1] — 2026-04-09
+
+### Fixed
+- `resume-content/*.md` 内容同步至 v2.2（修复 Markdown 导出产物仍为 v1.0 旧内容）
+
 ## [v2.0] — 2026-04-08
 
 ### Added
